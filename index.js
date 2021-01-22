@@ -8,17 +8,15 @@ app.get('/', function(req, res) {
 });
 
 io.sockets.on('connection', function(socket) {
-    socket.on('username', function(username) {
-        socket.username = username;
-        io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
+    socket.on('connect user', function(username) {
+        socket.connect_user = username;
+        io.emit('is_online', '🔵 <i>' + socket.connect_user + ' join the chat..</i>');
     });
-
     socket.on('disconnect', function(username) {
         io.emit('is_online', '🔴 <i>' + socket.username + ' left the chat..</i>');
     })
-
-    socket.on('chat_message', function(message) {
-        io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
+    socket.on('chat message', function(message) {
+        io.emit('chat message', '<strong>' + socket.username + '</strong>: ' + message);
     });
 
 });
