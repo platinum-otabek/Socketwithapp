@@ -8,17 +8,17 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket) {
-    socket.on('connect user', function(username) {
-       socket.connect_user = username;
-        io.emit('connect user', '🔵 <i>' + username + ' join the chat..</i>');
-    });
-    socket.on('disconnect', function(username) {
-        io.emit('connect user', '🔴 <i>' + socket.connect_user + ' left the chat..</i>');
-    })
-    socket.on('chat message', function(msg) {
-        console.log(msg);
-        io.emit('chat message', '<strong>' + socket.connect_user + '</strong>: ' + msg);
-    });
+    // socket.on('connect user', function(username) {
+    //    socket.connect_user = username;
+    //     io.emit('connect user', '🔵 <i>' + username + ' join the chat..</i>');
+    // });
+    // socket.on('disconnect', function(username) {
+    //     io.emit('connect user', '🔴 <i>' + socket.connect_user + ' left the chat..</i>');
+    // })
+    // socket.on('chat message', function(msg) {
+    //     console.log(msg);
+    //     io.emit('chat message', '<strong>' + socket.connect_user + '</strong>: ' + msg);
+    // });
 });
 const server = http.listen(8080, function() {
     console.log('listening on *:8080');
